@@ -6,11 +6,12 @@ The basic idea is to design a algorithm based on A* to make route plan which cou
 
 So far, it is a simple implementation of the algorithm. To simplify the map, I build a simple model to simulate the real street map.(Figure 1). I used nodes to imply every corner, numbers to imply the crime rate of this place, and a pair of number to imply the coordinate of this place.
 
-![image1](img1.png)
+><img src="img1.png" alt="Figure1" width="300" height="300">
 
 Different from the A* algorithm, I used a new function to calculate f. Here f = DistanceDifference * CrimeRate. Here DistanceDifference = abs( g + h - l ). Here g and is the same with the g in A* which is distance between the current node and the start node, and h is the heuristic distance from the current node to the end node. Here l is user’s setting length of the route. So DistanceDifference is the difference between the user’s setting length with the real length of the route. The CrimeRate = CycleRate. CycleRate is the average crime rate of the surrounding between the current node with the goal (Figure 2). The best node we can pick to move forward with is the node with smallest value of f. From the start node, find the adjacent nodes and calculate their value of f and picked the node with the smallest value of f. Keep spreading until we find the goal place and at the same time, the route length is close to the length as the user set before. Finally, return the path. One node could be picked more than one time.
 
-![image1](img2.png)
+<!-- ![image1](img2.png) -->
+><img src="img2.png" alt="Figure2" width="300" height="300">
 
 # Result
 For the map like the figure1, start node is (0, 0), goal node is (4, 4), when the setting length of the route is 40, an optimal route is:
